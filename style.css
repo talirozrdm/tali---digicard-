@@ -641,6 +641,34 @@ h3 {
   outline: none;
 }
 
+.accessibility-floating-button {
+  position: fixed;
+  left: max(18px, env(safe-area-inset-left));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 99999;
+  min-height: 44px;
+  padding: 12px 18px;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(33, 65, 95, 0.18);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.accessibility-floating-button:hover,
+.accessibility-floating-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(33, 65, 95, 0.22);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -763,6 +791,16 @@ h3 {
 
   .contact-actions {
     display: grid;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility-floating-button {
+    left: max(12px, env(safe-area-inset-left));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    min-height: 42px;
+    padding: 11px 15px;
+    font-size: 14px;
   }
 }
 
