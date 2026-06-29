@@ -30,7 +30,7 @@ if (menuToggle && mainNav) {
 }
 
 const revealItems = [
-  ...document.querySelectorAll(".hero-logo, .hero .eyebrow, .hero-title, .hero-line, .hero-text, .hero-clarity, .hero .button, .hero-media, .expertise-strip, section, .site-footer"),
+  ...document.querySelectorAll(".hero-logo, .hero-title, .hero-line, .hero-text, .hero-clarity, .hero .button, .hero-media, .expertise-strip, section, .site-footer"),
 ];
 
 document.querySelectorAll(".card, .process-list article, .contact-actions .button").forEach((item, index) => {
