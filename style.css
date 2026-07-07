@@ -14,6 +14,12 @@
   --radius: 8px;
 }
 
+@font-face {
+  font-family: "Cafe";
+  src: local("Cafe"), local("Cafe Regular"), local("Cafe-Regular");
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -96,6 +102,13 @@ section {
   scroll-margin-top: 94px;
 }
 
+.header-brand-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -117,6 +130,36 @@ section {
   aspect-ratio: 64 / 45;
   border: 1px solid var(--color-border);
   object-fit: cover;
+}
+
+.header-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border: 1px solid rgba(33, 65, 95, 0.12);
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(33, 65, 95, 0.1);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.header-whatsapp:hover,
+.header-whatsapp:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(33, 65, 95, 0.14);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.header-whatsapp .button-icon {
+  margin-inline-end: 0.36em;
 }
 
 .menu-toggle {
@@ -232,6 +275,16 @@ h3 {
   font-size: 1.16rem;
   line-height: 1.32;
   letter-spacing: 0;
+}
+
+.smart-word {
+  display: inline-block;
+  font-family: "Cafe", Georgia, "Times New Roman", serif;
+  font-size: 1.25em;
+  font-weight: 700;
+  line-height: 0.95;
+  color: #a66f78;
+  vertical-align: -0.03em;
 }
 
 .hero-line {
@@ -359,6 +412,31 @@ h3 {
   background: var(--color-surface);
   color: var(--color-primary);
   border-color: var(--color-border);
+}
+
+.button-social {
+  color: var(--color-surface);
+  border-color: transparent;
+}
+
+.button-instagram {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #405de6 0%, #833ab4 32%, #c13584 56%, #e1306c 74%, #f77737 100%);
+}
+
+.button-facebook {
+  background: #1877f2;
+}
+
+.button-social:hover,
+.button-social:focus-visible {
+  box-shadow: 0 14px 30px rgba(33, 65, 95, 0.18);
+}
+
+.button-facebook .button-icon {
+  fill: currentColor;
+  stroke: none;
 }
 
 .button-outline {
@@ -498,6 +576,17 @@ h3 {
   color: var(--color-muted);
 }
 
+.text-stack {
+  display: grid;
+  gap: 14px;
+  max-width: 860px;
+  color: var(--color-muted);
+}
+
+.text-stack p {
+  margin-bottom: 0;
+}
+
 .muted-section {
   width: 100%;
   max-width: none;
@@ -518,7 +607,9 @@ h3 {
 
 .process-list article {
   display: grid;
-  gap: 4px;
+  align-content: start;
+  gap: 10px;
+  min-height: 190px;
   padding: 22px;
   background: rgba(255, 255, 255, 0.74);
   border: 1px solid var(--color-border);
@@ -535,6 +626,11 @@ h3 {
   color: var(--color-surface);
   border-radius: 50%;
   font-weight: 700;
+}
+
+.process-list p {
+  margin-bottom: 0;
+  color: var(--color-muted);
 }
 
 .split-section {
@@ -811,13 +907,32 @@ h3 {
     padding-inline: 64px;
   }
 
+  .header-brand-actions {
+    justify-content: center;
+    gap: 8px;
+  }
+
   .brand {
     justify-content: center;
     text-align: center;
   }
 
   .brand img {
-    width: 62px;
+    width: 58px;
+  }
+
+  .header-whatsapp {
+    width: 38px;
+    min-height: 38px;
+    padding: 0;
+  }
+
+  .header-whatsapp span {
+    display: none;
+  }
+
+  .header-whatsapp .button-icon {
+    margin: 0;
   }
 
   .menu-toggle {
