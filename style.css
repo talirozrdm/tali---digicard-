@@ -14,12 +14,6 @@
   --radius: 8px;
 }
 
-@font-face {
-  font-family: "Cafe";
-  src: local("Cafe"), local("Cafe Regular"), local("Cafe-Regular");
-  font-display: swap;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -278,13 +272,13 @@ h3 {
 }
 
 .smart-word {
-  display: inline-block;
-  font-family: "Cafe", Georgia, "Times New Roman", serif;
-  font-size: 1.25em;
-  font-weight: 700;
-  line-height: 1;
+  display: inline;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   color: inherit;
-  vertical-align: -0.02em;
+  vertical-align: baseline;
   white-space: nowrap;
 }
 
@@ -562,6 +556,231 @@ h3 {
   font-size: 0.86rem;
   font-weight: 700;
   transition: color 0.24s ease, border-color 0.24s ease;
+}
+
+.plans-section {
+  display: grid;
+  gap: 24px;
+}
+
+.plans-heading {
+  margin-bottom: 0;
+}
+
+.plans-heading p {
+  color: var(--color-muted);
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.plans-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.marketing-plan-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 30px rgba(33, 65, 95, 0.07);
+  overflow: hidden;
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.plan-card-main {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+}
+
+.marketing-plan-card h3,
+.extra-services h3,
+.extra-service-card h4,
+.plan-fit h4 {
+  margin-bottom: 0;
+}
+
+.plan-price {
+  width: fit-content;
+  margin-bottom: 0;
+  padding: 6px 11px;
+  background: var(--color-accent-soft);
+  color: var(--color-primary);
+  border: 1px solid rgba(216, 167, 160, 0.54);
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.plan-responsibility {
+  margin-bottom: 0;
+  color: var(--color-primary);
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.plan-summary,
+.plan-details,
+.extra-service-card p {
+  color: var(--color-muted);
+}
+
+.plan-summary {
+  margin-bottom: 0;
+}
+
+.plan-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  min-height: 42px;
+  margin-top: auto;
+  padding: 9px 16px;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.plan-toggle::after {
+  content: "+";
+  margin-inline-start: 8px;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.marketing-plan-card.is-open .plan-toggle::after {
+  content: "−";
+}
+
+.plan-toggle:hover,
+.plan-toggle:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(33, 65, 95, 0.14);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.plan-details {
+  max-height: 0;
+  overflow: hidden;
+  border-top: 1px solid transparent;
+  opacity: 0;
+  transition:
+    max-height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.24s ease,
+    border-color 0.24s ease;
+}
+
+.marketing-plan-card.is-open .plan-details {
+  border-color: var(--color-border);
+  opacity: 1;
+}
+
+.plan-details ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 18px 24px 0 0;
+}
+
+.plan-details li {
+  padding-inline-start: 4px;
+}
+
+.plan-fit {
+  display: grid;
+  gap: 6px;
+  margin: 18px 24px 24px;
+  padding: 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.plan-fit p {
+  margin-bottom: 0;
+}
+
+.extra-services {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.extra-services-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.extra-service-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px 12px;
+  align-items: start;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 18px rgba(33, 65, 95, 0.045);
+}
+
+.extra-service-icon {
+  grid-row: span 3;
+  width: 34px;
+  height: 34px;
+  padding: 7px;
+  background: var(--color-accent-soft);
+  color: var(--color-primary);
+  border: 1px solid rgba(216, 167, 160, 0.58);
+  border-radius: 50%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.extra-service-price {
+  margin-bottom: 0;
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.extra-service-detail {
+  grid-column: 2;
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.plans-note {
+  margin-bottom: 0;
+  padding: 14px 18px;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 26px rgba(33, 65, 95, 0.12);
+  font-weight: 700;
+  text-align: center;
+}
+
+.plans-cta {
+  display: flex;
+  justify-content: center;
 }
 
 .asset-panel {
@@ -896,6 +1115,15 @@ h3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .plans-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .extra-services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .process-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -920,6 +1148,15 @@ h3 {
 
   .contact-actions {
     display: grid;
+  }
+
+  .plan-toggle,
+  .plans-cta .button {
+    width: 100%;
+  }
+
+  .extra-service-card {
+    grid-template-columns: auto minmax(0, 1fr);
   }
 }
 
