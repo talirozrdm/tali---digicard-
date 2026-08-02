@@ -5,6 +5,7 @@ const tips = document.querySelectorAll(".tip");
 const modalButtons = document.querySelectorAll("[data-modal]");
 const closeButtons = document.querySelectorAll(".dialog-close");
 const navLinks = document.querySelectorAll(".main-nav a[href^='#']");
+const planToggles = document.querySelectorAll(".plan-toggle");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const updateHeaderState = () => {
@@ -34,6 +35,11 @@ const revealItems = [
 ];
 
 document.querySelectorAll(".card, .process-list article, .contact-actions .button").forEach((item, index) => {
+  item.classList.add("reveal", "stagger-item");
+  item.style.setProperty("--stagger-delay", `${Math.min(index % 6, 5) * 90}ms`);
+});
+
+document.querySelectorAll(".marketing-plan-card, .extra-service-card").forEach((item, index) => {
   item.classList.add("reveal", "stagger-item");
   item.style.setProperty("--stagger-delay", `${Math.min(index % 6, 5) * 90}ms`);
 });
@@ -94,6 +100,37 @@ tips.forEach((tip) => {
     });
     tip.classList.toggle("is-active");
   });
+});
+
+planToggles.forEach((toggle) => {
+  const details = document.getElementById(toggle.getAttribute("aria-controls"));
+  const card = toggle.closest(".marketing-plan-card");
+
+  if (!details || !card) return;
+
+  const setExpanded = (isExpanded) => {
+    toggle.setAttribute("aria-expanded", String(isExpanded));
+    details.setAttribute("aria-hidden", String(!isExpanded));
+    card.classList.toggle("is-open", isExpanded);
+    details.style.maxHeight = isExpanded ? `${details.scrollHeight}px` : "0px";
+  };
+
+  setExpanded(false);
+
+  toggle.addEventListener("click", () => {
+    const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+    setExpanded(!isExpanded);
+  });
+
+  window.addEventListener(
+    "resize",
+    () => {
+      if (toggle.getAttribute("aria-expanded") === "true") {
+        details.style.maxHeight = `${details.scrollHeight}px`;
+      }
+    },
+    { passive: true },
+  );
 });
 
 document.addEventListener("click", (event) => {
