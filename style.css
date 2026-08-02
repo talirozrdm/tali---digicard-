@@ -576,12 +576,13 @@ h3 {
 .plans-grid {
   display: grid;
   gap: 16px;
+  align-items: start;
 }
 
 .marketing-plan-card {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -1117,7 +1118,7 @@ h3 {
 
   .plans-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
+    align-items: start;
   }
 
   .extra-services-grid {
